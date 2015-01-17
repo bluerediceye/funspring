@@ -1,6 +1,6 @@
 <html>
 <head>
-    <script type="text/javascript" src="/js/jquery-2.1.3.js"></script>
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.3.js"></script>
     <title>Being Java Guys | Hello World</title>
 </head>
 <body>
