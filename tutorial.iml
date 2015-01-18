@@ -46,7 +46,8 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManager" />
-          <factory-entry name="entityManagerFactory" />
+          <factory-entry name="entityManagerFactory" value="206c43f0-044b-4a92-be85-c6d03d344556" />
+          <factory-entry name="tutorialUnit" value="206c43f0-044b-4a92-be85-c6d03d344556" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
@@ -93,6 +94,11 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-jpa:1.7.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.data:spring-data-commons:1.9.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Maven: org.aspectj:aspectjrt:1.8.2" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.7" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="Maven: org.slf4j:jcl-over-slf4j:1.7.7" level="project" />
     <orderEntry type="library" name="Maven: cglib:cglib:2.2.2" level="project" />
     <orderEntry type="library" name="Maven: asm:asm:3.3.1" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: javax.servlet:javax.servlet-api:3.1.0" level="project" />
