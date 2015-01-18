@@ -5,20 +5,23 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 /**
  * Created by mli on 18/01/15.
  */
-
-@Repository(value = "userRepository")
+@Repository
 public class UserRepositoryImpl implements CustomUserRepository {
     
     @PersistenceContext
     private EntityManager entityManager;
     
+    @SuppressWarnings("unchecked")
     @Override
-    public List<User> findUsersByName() {
-        return null;
+    public List<User> findUsersByName(String name) {
+        Query query =  entityManager.createQuery("select user from User user where user.name = :username");
+        query.setParameter("username", name);
+        return (List<User>) query.getResultList();
     }
 }

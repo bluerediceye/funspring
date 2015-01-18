@@ -20,6 +20,11 @@ public class RestUserController {
     public User userDetails(@PathVariable Long id) {
         return userService.findUserById(id);
     }
+    
+    @RequestMapping(value = "/user/name/{name}", method = RequestMethod.GET)
+    public List<User> usersDetailsByName(@PathVariable String name){
+        return userService.findUsersByName(name);
+    }
 
     @RequestMapping(value = "/users")
     public List<User> allUserDetails() {

@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     
-    @Resource(name = "userRepository")
+    @Autowired
     private UserRepository userRepository;
 
     @Override
@@ -30,6 +30,11 @@ public class UserServiceImpl implements UserService {
     @Transactional(readOnly = true)
     public User findUserById(Long id) {
         return userRepository.findOne(id);
+    }
+
+    @Override
+    public List<User> findUsersByName(String name) {
+        return userRepository.findUsersByName(name);
     }
 
     @Override

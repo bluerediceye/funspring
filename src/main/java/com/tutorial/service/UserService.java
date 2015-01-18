@@ -13,6 +13,8 @@ public interface UserService {
 
     public User findUserById(Long id);
     
+    public List<User> findUsersByName(String name);
+    
     public List<User> findAllUsers();
 
     public void updateUser(User user);

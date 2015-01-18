@@ -8,8 +8,6 @@ import java.util.List;
  * Created by mli on 18/01/15.
  */
 public interface CustomUserRepository {
-    
-    
-    public List<User> findUsersByName();
-    
+
+    public List<User> findUsersByName(String name);
 }

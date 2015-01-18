@@ -21,9 +21,9 @@
                                   ignore-unresolvable="false"
                                   system-properties-mode="NEVER"/>
 
-    <!--<jpa:repositories entity-manager-factory-ref="entityManagerFactory"-->
-                      <!--base-package="com.tutorial.repository"-->
-            <!--transaction-manager-ref="transactionManager"/>-->
+    <jpa:repositories entity-manager-factory-ref="entityManagerFactory"
+                      base-package="com.tutorial.repository"
+            transaction-manager-ref="transactionManager"/>
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
