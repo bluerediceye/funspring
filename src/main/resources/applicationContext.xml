@@ -14,16 +14,16 @@
        http://www.springframework.org/schema/data/jpa
        http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
 
-    <context:component-scan base-package="com.tutorial.service"/>
+    <context:component-scan base-package="com.tutorial.service, com.tutorial.repository"/>
 
     <context:property-placeholder ignore-resource-not-found="false"
                                   location="classpath:database.properties"
                                   ignore-unresolvable="false"
                                   system-properties-mode="NEVER"/>
 
-    <jpa:repositories entity-manager-factory-ref="entityManagerFactory"
-                      base-package="com.tutorial.repository"
-            transaction-manager-ref="transactionManager"/>
+    <!--<jpa:repositories entity-manager-factory-ref="entityManagerFactory"-->
+                      <!--base-package="com.tutorial.repository"-->
+            <!--transaction-manager-ref="transactionManager"/>-->
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 

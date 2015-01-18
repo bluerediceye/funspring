@@ -9,6 +9,9 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
     <context:component-scan base-package="com.tutorial.webapp"/>
     <mvc:annotation-driven/>
 
+    <!--suppress SpringModelInspection -->
+    <mvc:view-controller path="/" view-name="index"/>
+
     <mvc:view-resolvers>
         <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
             <property name="prefix" value="/WEB-INF/jsp/"/>

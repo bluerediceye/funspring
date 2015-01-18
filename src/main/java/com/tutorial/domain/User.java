@@ -1,6 +1,7 @@
 package com.tutorial.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by mli on 16/01/15.
@@ -8,7 +9,7 @@ import javax.persistence.*;
 
 @Table(name = "USER")
 @Entity
-public class User {
+public class User implements Serializable{
 
     public User() {
     }
