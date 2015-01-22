@@ -10,22 +10,22 @@ import java.util.List;
 @Entity
 @Table(name = "GROUPT")
 public class Group {
-    
+
     @Id
     @GeneratedValue
     @Column(name = "ID")
     private Long id;
-    
+
     @Column(name = "NAME")
     private String name;
-    
+
     @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<User> users = new ArrayList<>();
 
     public String getName() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }

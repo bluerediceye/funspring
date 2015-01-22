@@ -9,11 +9,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Home {
-    
+
+    String message = "Welcome to your 1st Maven Spring project !";
     @Autowired
     private UserService userService;
-    
-    String message = "Welcome to your 1st Maven Spring project !";
 
     @RequestMapping("/index")
     public ModelAndView index() {
@@ -21,7 +20,7 @@ public class Home {
         System.out.println("from controller");
         return new ModelAndView("index", "message", message);
     }
-    
+
     @RequestMapping("/hello")
     public ModelAndView showMessage() {
         System.out.println("from controller");

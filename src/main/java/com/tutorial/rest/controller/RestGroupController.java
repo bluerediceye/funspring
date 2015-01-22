@@ -21,14 +21,14 @@ public class RestGroupController {
     public void createGroup() {
         Group group = new Group();
         group.setName("Java");
-        
+
         User user = new User();
         user.setName("Ming");
         user.setPassword("password");
         user.setGroup(group);
-        
+
         group.getUsers().add(user);
-        
+
         groupRepository.save(group);
     }
 }

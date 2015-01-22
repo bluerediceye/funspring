@@ -9,18 +9,18 @@ import java.io.Serializable;
 
 @Table(name = "USER")
 @Entity
-public class User implements Serializable{
-    
+public class User implements Serializable {
+
     public static final String FIND_USERS_BY_NAME = "findUsersByName";
 
     @Id
     @GeneratedValue
     @Column(name = "ID", nullable = false)
     private Long id;
-    
+
     @Column(name = "NAME", nullable = false)
     private String name;
-    
+
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
