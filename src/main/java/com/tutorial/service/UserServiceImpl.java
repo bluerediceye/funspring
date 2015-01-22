@@ -2,12 +2,12 @@ package com.tutorial.service;
 
 import com.tutorial.domain.User;
 import com.tutorial.repository.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-import javax.annotation.Resources;
 import java.util.List;
 
 
@@ -17,12 +17,15 @@ import java.util.List;
 @Service
 public class UserServiceImpl implements UserService {
     
+    private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
+    
     @Autowired
     private UserRepository userRepository;
 
     @Override
     @Transactional
     public void saveUser(User user) {
+        LOG.info("Save user into database.");
         userRepository.save(user);
     }
 
