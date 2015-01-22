@@ -10,6 +10,23 @@ import java.io.Serializable;
 @Table(name = "USER")
 @Entity
 public class User implements Serializable{
+    
+    public static final String FIND_USERS_BY_NAME = "findUsersByName";
+
+    @Id
+    @GeneratedValue
+    @Column(name = "ID", nullable = false)
+    private Long id;
+    
+    @Column(name = "NAME", nullable = false)
+    private String name;
+    
+    @Column(name = "PASSWORD", nullable = false)
+    private String password;
+
+    @JoinColumn(name = "GROUP_ID")
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Group group;
 
     public User() {
     }
@@ -19,16 +36,13 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    @Id
-    @GeneratedValue
-    @Column(name = "ID", nullable = false)
-    private Long id;
+    public Group getGroup() {
+        return group;
+    }
 
-    @Column(name = "NAME", nullable = false)
-    private String name;
-
-    @Column(name = "PASSWORD", nullable = false)
-    private String password;
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 
     public String getName() {
         return name;
@@ -46,11 +60,11 @@ public class User implements Serializable{
         this.password = password;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -7,7 +7,7 @@
     <!-- Spring application context -->
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
+        <param-value>classpath:applicationContext-jpa.xml</param-value>
     </context-param>
     
     <!-- Log4j -->
@@ -18,7 +18,7 @@
 
     <context-param>
         <param-name>log4jConfigLocation</param-name>
-        <param-value>/WEB-INF/log4j.properties</param-value>
+        <param-value>/WEB-INF/config/log4j.properties</param-value>
     </context-param>
 
     <context-param>
@@ -56,7 +56,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/servletContext-rest.xml</param-value>
+            <param-value>/WEB-INF/config/servletContext-rest.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
@@ -73,7 +73,7 @@
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>/WEB-INF/servletContext-webapp.xml</param-value>
+            <param-value>/WEB-INF/config/servletContext-webapp.xml</param-value>
         </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
