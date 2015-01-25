@@ -8,13 +8,8 @@ import java.util.List;
  * Created by mli on 20/01/15.
  */
 @Entity
-@Table(name = "GROUPT")
-public class Group {
-
-    @Id
-    @GeneratedValue
-    @Column(name = "ID")
-    private Long id;
+@Table(name = "GROUPS")
+public class Group extends BaseEntity{
 
     @Column(name = "NAME")
     private String name;
@@ -28,14 +23,6 @@ public class Group {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public List<User> getUsers() {
