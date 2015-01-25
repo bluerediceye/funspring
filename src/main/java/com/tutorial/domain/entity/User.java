@@ -6,6 +6,7 @@ import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.Past;
 
 /**
  * Created by mli on 16/01/15.
@@ -32,6 +33,7 @@ public class User extends BaseEntity {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
+    @Past
     @Column(name = "DATE_OF_BIRTH", nullable = false)
     private LocalDate dateOfBirth;
     

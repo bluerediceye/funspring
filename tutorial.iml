@@ -13,14 +13,9 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration process_explicitly_annotated="false">
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/dispatcher-servlet.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-database.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-database.xml</file>
-        </fileset>
         <fileset id="web application context" name="MVC application context" removed="true">
           <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-jpa.xml</file>
         </fileset>
         <fileset id="web webappServlet servlet context" name="MVC webappServlet servlet context" removed="true">
           <dependency>web application context</dependency>
@@ -30,13 +25,17 @@
           <dependency>web application context</dependency>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/servletContext-rest.xml</file>
         </fileset>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-jpa.xml</file>
+        </fileset>
         <fileset id="fileset2" name="Webapp Servlet Context" removed="false">
           <dependency>fileset</dependency>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/servletContext-webapp.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-webapp.xml</file>
         </fileset>
         <fileset id="fileset3" name="Rest Servlet Context" removed="false">
           <dependency>fileset</dependency>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/servletContext-rest.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-rest.xml</file>
         </fileset>
       </configuration>
     </facet>
