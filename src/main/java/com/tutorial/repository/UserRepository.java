@@ -1,6 +1,6 @@
 package com.tutorial.repository;
 
-import com.tutorial.domain.User;
+import com.tutorial.domain.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

@@ -1,4 +1,4 @@
-package com.tutorial.domain;
+package com.tutorial.domain.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;

@@ -1,7 +1,7 @@
 package com.tutorial.rest.controller;
 
-import com.tutorial.domain.Group;
-import com.tutorial.domain.User;
+import com.tutorial.domain.entity.Group;
+import com.tutorial.domain.entity.User;
 import com.tutorial.repository.GroupRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

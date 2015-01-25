@@ -1,9 +1,11 @@
 package com.tutorial.webapp.controller;
 
-import com.tutorial.domain.User;
+import com.tutorial.domain.entity.User;
 import com.tutorial.service.UserService;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Home {
+    
+    private Logger LOG = LoggerFactory.getLogger(Home.class);
 
     String message = "Welcome to your 1st Maven Spring project !";
     @Autowired
@@ -18,8 +22,10 @@ public class Home {
 
     @RequestMapping("/index")
     public ModelAndView index() {
-        userService.saveUser(new User("Ming Li", "123456", new LocalDate()));
-        System.out.println("from controller");
+        User user = new User("Ming Li", "123456", new LocalDate(1986,6, 17));
+        user.setCreationDate(new DateTime());
+        userService.saveUser(user);
+        LOG.info("User's age is: {}", user.getAge());
         return new ModelAndView("index", "message", message);
     }
 

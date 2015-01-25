@@ -1,6 +1,6 @@
 package com.tutorial.repository;
 
-import com.tutorial.domain.Group;
+import com.tutorial.domain.entity.Group;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

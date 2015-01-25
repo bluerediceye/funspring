@@ -1,4 +1,4 @@
-package com.tutorial.domain;
+package com.tutorial.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.Type;

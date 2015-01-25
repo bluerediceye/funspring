@@ -1,6 +1,6 @@
 package com.tutorial.service;
 
-import com.tutorial.domain.User;
+import com.tutorial.domain.entity.User;
 
 import java.util.List;
 

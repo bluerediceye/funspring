@@ -1,6 +1,6 @@
 package com.tutorial.rest.controller;
 
-import com.tutorial.domain.User;
+import com.tutorial.domain.entity.User;
 import com.tutorial.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

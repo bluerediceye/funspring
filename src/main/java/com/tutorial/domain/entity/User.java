@@ -1,17 +1,22 @@
-package com.tutorial.domain;
+package com.tutorial.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * Created by mli on 16/01/15.
  */
+
+@EntityListeners(
+        {
+                
+                
+        }
+)
 
 @Table(name = "USERS")
 @Entity
@@ -24,11 +29,14 @@ public class User extends BaseEntity {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentLocalDate")
     @Column(name = "DATE_OF_BIRTH", nullable = false)
     private LocalDate dateOfBirth;
+    
+    @Transient
+    private int age;
 
     @JoinColumn(name = "GROUP_ID")
     @ManyToOne(cascade = CascadeType.ALL)
@@ -75,4 +83,18 @@ public class User extends BaseEntity {
         this.password = password;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+    
+    @PostLoad
+    @PreUpdate
+    @PrePersist
+    private void calculateAge(){
+        this.age = new LocalDate().getYear() - this.dateOfBirth.getYear();
+    }
 }
