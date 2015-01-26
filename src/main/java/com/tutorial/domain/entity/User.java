@@ -1,7 +1,6 @@
 package com.tutorial.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.tutorial.persistence.EntityLifecycleListener;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -30,7 +29,7 @@ public class User extends BaseEntity {
     @Past
     @Column(name = "DATE_OF_BIRTH", nullable = false)
     private LocalDate dateOfBirth;
-    
+
     @Transient
     private int age;
 
@@ -86,11 +85,11 @@ public class User extends BaseEntity {
     public void setAge(int age) {
         this.age = age;
     }
-    
+
     @PostLoad
     @PreUpdate
     @PrePersist
-    private void calculateAge(){
+    private void calculateAge() {
         this.age = new LocalDate().getYear() - this.dateOfBirth.getYear();
     }
 }

@@ -13,16 +13,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class Home {
-    
-    private Logger LOG = LoggerFactory.getLogger(Home.class);
 
     String message = "Welcome to your 1st Maven Spring project !";
+    private Logger LOG = LoggerFactory.getLogger(Home.class);
     @Autowired
     private UserService userService;
 
     @RequestMapping("/index")
     public ModelAndView index() {
-        User user = new User("Ming Li", "123456", new LocalDate(1986,6, 17));
+        User user = new User("Ming Li", "123456", new LocalDate(1986, 6, 17));
         user.setCreationDate(new DateTime());
         userService.saveUser(user);
         LOG.info("User's age is: {}", user.getAge());

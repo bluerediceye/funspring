@@ -9,7 +9,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "GROUPS")
-public class Group extends BaseEntity{
+public class Group extends BaseEntity {
 
     @Column(name = "NAME")
     private String name;

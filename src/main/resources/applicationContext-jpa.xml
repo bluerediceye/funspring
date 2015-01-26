@@ -31,10 +31,10 @@
     </bean>
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
-        <property name="driverClass" value="${jdbc.driverClassName}"/>
-        <property name="jdbcUrl" value="${jdbc.url}"/>
-        <property name="user" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClass" value="${hibernate.jdbc.driverClassName}"/>
+        <property name="jdbcUrl" value="${hibernate.jdbc.url}"/>
+        <property name="user" value="${hibernate.jdbc.username}"/>
+        <property name="password" value="${hibernate.jdbc.password}"/>
     </bean>
 
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
@@ -67,23 +67,23 @@
         </property>
         <property name="jpaPropertyMap">
             <map>
-                <entry key="hibernate.connection.driver_class" value="${jdbc.driverClassName}"/>
-                <entry key="hibernate.connection.url" value="${jdbc.url}"/>
-                <entry key="hibernate.connection.username" value="${jdbc.username}"/>
-                <entry key="hibernate.connection.password" value="${jdbc.password}"/>
-                <entry key="hibernate.dialect" value="${jdbc.dialect}"/>
-                <entry key="hibernate.show_sql" value="${jdbc.show_sql}"/>
-                <entry key="hibernate.format_sql" value="${jdbc.format_sql}"/>
-                <entry key="hibernate.hbm2ddl.auto" value="${jdbc.ddl}"/>
-                <entry key="hibernate.archive.autodetection" value="class,hbm"/>
-                <entry key="hibernate.c3p0.acquire_increment" value="1"/>
-                <entry key="hibernate.c3p0.min_size" value="5"/>
-                <entry key="hibernate.c3p0.max_size" value="20"/>
-                <entry key="hibernate.c3p0.timeout" value="300"/>
-                <entry key="hibernate.c3p0.max_statements" value="50"/>
-                <entry key="hibernate.c3p0.idle_test_period" value="60"/>
-                <entry key="hibernate.c3p0.validate" value="true"/>
-                <entry key="hibernate.c3p0.preferredTestQuery" value="SELECT 1;"/>
+                <entry key="hibernate.connection.driver_class" value="${hibernate.jdbc.driverClassName}"/>
+                <entry key="hibernate.connection.url" value="${hibernate.jdbc.url}"/>
+                <entry key="hibernate.connection.username" value="${hibernate.jdbc.username}"/>
+                <entry key="hibernate.connection.password" value="${hibernate.jdbc.password}"/>
+                <entry key="hibernate.dialect" value="${hibernate.jdbc.dialect}"/>
+                <entry key="hibernate.show_sql" value="${hibernate.jdbc.show_sql}"/>
+                <entry key="hibernate.format_sql" value="${hibernate.jdbc.format_sql}"/>
+                <entry key="hibernate.hbm2ddl.auto" value="${hibernate.jdbc.ddl}"/>
+                <entry key="hibernate.archive.autodetection" value="${hibernate.archive.autodetection}"/>
+                <entry key="hibernate.c3p0.acquire_increment" value="${hibernate.c3p0.acquire_increment}"/>
+                <entry key="hibernate.c3p0.min_size" value="${hibernate.c3p0.min_size}"/>
+                <entry key="hibernate.c3p0.max_size" value="${hibernate.c3p0.max_size}"/>
+                <entry key="hibernate.c3p0.timeout" value="${hibernate.c3p0.timeout}"/>
+                <entry key="hibernate.c3p0.max_statements" value="${hibernate.c3p0.max_statements}"/>
+                <entry key="hibernate.c3p0.idle_test_period" value="${hibernate.c3p0.idle_test_period}"/>
+                <entry key="hibernate.c3p0.validate" value="${hibernate.c3p0.validate}"/>
+                <entry key="hibernate.c3p0.preferredTestQuery" value="${hibernate.c3p0.preferredTestQuery}"/>
             </map>
         </property>
     </bean>

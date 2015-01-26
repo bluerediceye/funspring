@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tutorial.persistence.EntityLifecycleListener;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -15,13 +14,13 @@ import java.io.Serializable;
  */
 @EntityListeners(value = EntityLifecycleListener.class)
 @MappedSuperclass
-public abstract class BaseEntity implements Serializable{
+public abstract class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue
     @Column(name = "ID", nullable = false)
     private Long id;
-    
+
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
