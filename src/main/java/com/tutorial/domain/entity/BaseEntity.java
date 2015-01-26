@@ -1,20 +1,19 @@
 package com.tutorial.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tutorial.persistence.EntityLifecycleListener;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.io.Serializable;
 
 /**
  * Created by mli on 25/01/15.
  */
+@EntityListeners(value = EntityLifecycleListener.class)
 @MappedSuperclass
 public abstract class BaseEntity implements Serializable{
 

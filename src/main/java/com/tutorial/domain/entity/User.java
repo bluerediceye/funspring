@@ -1,6 +1,7 @@
 package com.tutorial.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.tutorial.persistence.EntityLifecycleListener;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -11,13 +12,6 @@ import javax.validation.constraints.Past;
 /**
  * Created by mli on 16/01/15.
  */
-
-@EntityListeners(
-        {
-                
-                
-        }
-)
 
 @Table(name = "USERS")
 @Entity
