@@ -13,9 +13,41 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
     <mvc:view-controller path="/" view-name="index"/>
 
     <mvc:view-resolvers>
-        <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-            <property name="prefix" value="/WEB-INF/jsp/"/>
-            <property name="suffix" value=".jsp"/>
+        <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+            <property name="order" value="1"/>
+            <property name="contentNegotiationManager">
+                <bean class="org.springframework.web.accept.ContentNegotiationManager">
+                    <constructor-arg>
+                        <bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+                            <constructor-arg>
+                                <map>
+                                    <entry key="json" value="application/json"/>
+                                    <entry key="xml" value="application/xml"/>
+                                </map>
+                            </constructor-arg>
+                        </bean>
+                    </constructor-arg>
+                </bean>
+            </property>
+            <property name="defaultViews">
+                <list>
+                    <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+                    <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+                        <constructor-arg>
+                            <bean class="org.springframework.oxm.xstream.XStreamMarshaller"/>
+                        </constructor-arg>
+                    </bean>
+                </list>
+            </property>
+            <property name="viewResolvers">
+                <list>
+                    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                        <property name="prefix" value="/WEB-INF/jsp/"/>
+                        <property name="suffix" value=".jsp"/>
+                    </bean>
+                    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
+                </list>
+            </property>
         </bean>
     </mvc:view-resolvers>
 
@@ -26,5 +58,14 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
     <!--suppress SpringModelInspection -->
     <mvc:resources mapping="/img/**" location="/img/" cache-period="10000"/>
     <mvc:default-servlet-handler />
+    
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+    </mvc:interceptors>
 
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver"/>
+    
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="i18n.messages"/>
+    </bean>
 </beans>

@@ -8,4 +8,5 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
 
     <context:component-scan base-package="com.tutorial.rest"/>
     <mvc:annotation-driven/>
+    
 </beans>
