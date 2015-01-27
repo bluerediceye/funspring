@@ -1,6 +1,7 @@
 package com.tutorial.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -15,10 +16,21 @@ import javax.validation.constraints.Past;
 @Table(name = "USERS")
 @Entity
 public class User extends BaseEntity {
+    
+    @Column(name = "FIRST_NAME", length = 50, nullable = false)
+    private String firstName;
 
+    @Column(name = "MIDDLE_NAME", length = 50, nullable = true)
+    private String middleName;
 
-    @Column(name = "NAME", nullable = false)
-    private String name;
+    @Column(name = "LAST_NAME", length = 50, nullable = false)
+    private String lastName;
+    
+    @Column(name = "USER_NAME", length = 50, unique = true,  nullable = false)
+    private String username;
+    
+    @Transient
+    private String fullName;
 
     @Column(name = "PASSWORD", nullable = false)
     private String password;
@@ -36,12 +48,15 @@ public class User extends BaseEntity {
     @JoinColumn(name = "GROUP_ID")
     @ManyToOne(cascade = CascadeType.ALL)
     private Group group;
-
+    
+    @Column(name = "ENABLED", nullable = false)
+    private boolean enabled;
+    
     public User() {
     }
 
-    public User(String name, String password, LocalDate dateOfBirth) {
-        this.name = name;
+    public User(String username, String password, LocalDate dateOfBirth) {
+        this.username = username;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
     }
@@ -62,12 +77,12 @@ public class User extends BaseEntity {
         this.group = group;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 
     public String getPassword() {
@@ -86,10 +101,64 @@ public class User extends BaseEntity {
         this.age = age;
     }
 
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+
     @PostLoad
     @PreUpdate
     @PrePersist
+    private void prepare(){
+        calculateAge();
+        calculateFullName();
+    }
+    
     private void calculateAge() {
         this.age = new LocalDate().getYear() - this.dateOfBirth.getYear();
+    }
+
+    private void calculateFullName() {
+        String middle = StringUtils.isEmpty(middleName) ? 
+                StringUtils.SPACE 
+                : 
+                StringUtils.SPACE + middleName.trim() + StringUtils.SPACE; 
+        this.fullName = firstName.trim() + middle + lastName.trim();
     }
 }

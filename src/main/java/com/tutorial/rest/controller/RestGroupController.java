@@ -23,7 +23,7 @@ public class RestGroupController {
         group.setName("Java");
 
         User user = new User();
-        user.setName("Ming");
+        user.setUsername("Ming");
         user.setPassword("password");
         user.setGroup(group);
 
