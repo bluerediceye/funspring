@@ -3,14 +3,15 @@ package com.tutorial.domain.entity;
 import javax.persistence.*;
 
 /**
- * Created by mli on 16/01/15.
+ * Created on 26/01/15
+ *
+ * @author Ming Li
  */
-
 @Table(name = "USERS")
 @Entity
 public class User extends BaseEntity {
-    
-    @Column(name = "USER_NAME", length = 50, unique = true,  nullable = false)
+
+    @Column(name = "USER_NAME", length = 50, unique = true, nullable = false)
     private String username;
 
     @Column(name = "PASSWORD", nullable = false)
@@ -19,14 +20,14 @@ public class User extends BaseEntity {
     @JoinColumn(name = "GROUP_ID")
     @ManyToOne(cascade = CascadeType.ALL)
     private Group group;
-    
+
     @Column(name = "ENABLED", nullable = false)
     private boolean enabled;
-    
+
     @OneToOne
     @JoinColumn(name = "FK_USER_DETAILS_ID", unique = true)
     private UserDetails userDetails;
-    
+
     public User() {
     }
 

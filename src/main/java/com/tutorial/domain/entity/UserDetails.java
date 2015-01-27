@@ -10,15 +10,17 @@ import javax.persistence.*;
 import javax.validation.constraints.Past;
 
 /**
- * Created by mli on 27/01/15.
+ * Created on 26/01/15
+ *
+ * @author Ming Li
  */
 @Entity
-@Table(name = "USER_DETAILS" )
+@Table(name = "USER_DETAILS")
 public class UserDetails extends BaseEntity {
-    
+
     @OneToOne(mappedBy = "userDetails")
     private User user;
-    
+
     @Column(name = "FIRST_NAME", length = 50, nullable = false)
     private String firstName;
 
@@ -44,7 +46,7 @@ public class UserDetails extends BaseEntity {
     @PostLoad
     @PreUpdate
     @PrePersist
-    private void prepare(){
+    private void prepare() {
         calculateAge();
         calculateFullName();
     }
@@ -105,15 +107,15 @@ public class UserDetails extends BaseEntity {
         return age;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 }

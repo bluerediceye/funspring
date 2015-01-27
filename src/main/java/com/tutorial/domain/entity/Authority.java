@@ -3,12 +3,14 @@ package com.tutorial.domain.entity;
 import javax.persistence.*;
 
 /**
- * Created by mli on 26/01/15.
+ *
+ * Created on 26/01/15
+ * @author Ming Li
  */
 @Entity
 @Table(name = "AUTHORITIES")
-public class Authority extends BaseEntity{
-    
+public class Authority extends BaseEntity {
+
     @OneToOne
     @JoinColumn(name = "USER_NAME", unique = true, referencedColumnName = "USER_NAME")
     private User user;

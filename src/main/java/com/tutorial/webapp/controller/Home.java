@@ -3,7 +3,6 @@ package com.tutorial.webapp.controller;
 import com.tutorial.domain.entity.User;
 import com.tutorial.service.UserService;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

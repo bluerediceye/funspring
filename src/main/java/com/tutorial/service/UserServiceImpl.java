@@ -2,7 +2,6 @@ package com.tutorial.service;
 
 import com.tutorial.domain.entity.User;
 import com.tutorial.repository.UserRepository;
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.Validator;
 
-import javax.persistence.*;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 
 /**
- * Created by mli on 18/01/15.
+ *
+ * Created on 18/01/15
+ * @author Ming Li
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -64,5 +66,21 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void deleteUserById(Long id) {
         userRepository.delete(id);
+    }
+
+    protected Validator getValidator() {
+        return validator;
+    }
+
+    protected void setValidator(Validator validator) {
+        this.validator = validator;
+    }
+
+    protected EntityManager getEntityManager() {
+        return entityManager;
+    }
+
+    protected void setEntityManager(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 }

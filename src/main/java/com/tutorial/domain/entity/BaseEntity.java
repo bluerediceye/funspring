@@ -10,7 +10,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by mli on 25/01/15.
+ * Created on 26/01/15
+ *
+ * @author Ming Li
  */
 @EntityListeners(value = EntityLifecycleListener.class)
 @MappedSuperclass

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mli on 20/01/15.
+ * Created on 26/01/15
+ *
+ * @author Ming Li
  */
 @Entity
 @Table(name = "GROUPS")
