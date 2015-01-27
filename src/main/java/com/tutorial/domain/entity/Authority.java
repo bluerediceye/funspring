@@ -31,6 +31,4 @@ public class Authority extends BaseEntity{
     public void setAuthority(String authority) {
         this.authority = authority;
     }
-    
-    
 }

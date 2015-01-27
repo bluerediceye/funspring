@@ -21,10 +21,10 @@ public class Home {
 
     @RequestMapping("/index")
     public ModelAndView index() {
-        User user = new User("Ming Li", "123456", new LocalDate(1986, 6, 17));
+        User user = new User();
         user.setCreationDate(new DateTime());
         userService.saveUser(user);
-        LOG.info("User's age is: {}", user.getAge());
+        LOG.info("User's age is: {}", user.getUserDetails().getFullName());
         return new ModelAndView("index", "message", message);
     }
 
