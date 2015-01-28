@@ -11,8 +11,8 @@ import javax.persistence.*;
 @Table(name = "AUTHORITIES")
 public class Authority extends BaseEntity {
 
-    @OneToOne
-    @JoinColumn(name = "USER_NAME", unique = true, referencedColumnName = "USER_NAME")
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "USERNAME", unique = false, referencedColumnName = "USERNAME")
     private User user;
 
     @Column(name = "AUTHORITY", length = 50, nullable = false)

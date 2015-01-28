@@ -1,6 +1,7 @@
 package com.tutorial.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
@@ -19,7 +20,11 @@ import javax.validation.constraints.Past;
 public class UserDetails extends BaseEntity {
 
     @OneToOne(mappedBy = "userDetails")
+    @JsonManagedReference
     private User user;
+
+    @Column(name = "TITLE", length = 5, nullable = true)
+    private String title;
 
     @Column(name = "FIRST_NAME", length = 50, nullable = false)
     private String firstName;
@@ -107,12 +112,16 @@ public class UserDetails extends BaseEntity {
         return age;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public User getUser() {
         return user;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public void setUser(User user) {

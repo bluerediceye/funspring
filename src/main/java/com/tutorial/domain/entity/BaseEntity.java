@@ -27,7 +27,7 @@ public abstract class BaseEntity implements Serializable {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "CREATION_DATE", nullable = false)
-    private DateTime creationDate;
+    private DateTime creationDate = new DateTime();
 
     public DateTime getCreationDate() {
         return creationDate;

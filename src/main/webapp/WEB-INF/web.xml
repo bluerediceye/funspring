@@ -7,9 +7,10 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
+            classpath:applicationContext-dataSource.xml
             classpath:applicationContext-jpa.xml
             classpath:applicationContext.xml
-            classpath:applicationContext-security.xml
+            /WEB-INF/config/webapp-security.xml
         </param-value>
     </context-param>
     

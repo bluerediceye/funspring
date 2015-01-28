@@ -1,5 +1,7 @@
 package com.tutorial.domain.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 /**
@@ -11,21 +13,22 @@ import javax.persistence.*;
 @Entity
 public class User extends BaseEntity {
 
-    @Column(name = "USER_NAME", length = 50, unique = true, nullable = false)
+    @Column(name = "USERNAME", length = 50, unique = true, nullable = false)
     private String username;
 
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @JoinColumn(name = "GROUP_ID")
-    @ManyToOne(cascade = CascadeType.ALL)
-    private Group group;
-
     @Column(name = "ENABLED", nullable = false)
     private boolean enabled;
 
-    @OneToOne
-    @JoinColumn(name = "FK_USER_DETAILS_ID", unique = true)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "FK_GROUP_ID")
+    private Group group;
+
+    @JsonBackReference
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "FK_USER_DETAILS_ID", unique = true, nullable = true)
     private UserDetails userDetails;
 
     public User() {
