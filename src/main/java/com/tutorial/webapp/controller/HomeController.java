@@ -7,14 +7,19 @@ import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class Home {
+public class HomeController {
 
-    private Logger LOG = LoggerFactory.getLogger(Home.class);
+    static int i = 5;
+
+    private Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
     private static String message = "Welcome to your 1st Maven Spring project !";
     
@@ -35,10 +40,13 @@ public class Home {
         return new ModelAndView("hello", "message", message);
     }
 
-    private User createUser() {
-        User user = new User();
-        user.setUsername("mlii");
+    @PreAuthorize("hasRole('ROLE_ADMIN') and hasPermission(#user,'createUser')")
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    public String createUser(@ModelAttribute("user") User user) {
+        LOG.info("Create an user !!!");
+        user.setUsername("mli" + i++);
         user.setPassword("password");
+        user.setEnabled(true);
         UserDetails details = new UserDetails();
         details.setFirstName("Ming");
         details.setLastName("Li");
@@ -46,7 +54,8 @@ public class Home {
         details.setTitle("Mr.");
         details.setUser(user);
         user.setUserDetails(details);
-        return user;
+        userService.saveUser(user);
+        return "index";
     }
     
 }  

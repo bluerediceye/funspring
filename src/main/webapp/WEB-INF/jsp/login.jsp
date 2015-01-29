@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
@@ -15,20 +16,26 @@
 </head>
 <body onload="document.f.j_username.focus();">
 <h3>Tutorial Custom Login Page</h3>
+<%--@elvariable id="error" type="java.lang.String"--%>
+<c:if test="${not empty error}">
+    <div class="errorblock">
+        Your login was unsuccessful. <br/>
+        Caused : ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+    </div>
+</c:if>
 
-
-<form action="/j_spring_security_check" name="f" method="post">
+<form action="<c:url value="/j_spring_security_check"/>" name="f" method="post">
     <table>
         <tr>
-            <td>User:</td>
+            <td><label for="j_username" data-value="User:"></label></td>
             <td>
-                <input type="text" name="j_username"/>
+                <input id="j_username" type="text" name="j_username"/>
             </td>
         </tr>
         <tr>
-            <td>Password:</td>
+            <td><label for="j_password" data-value="Password:"></label></td>
             <td>
-                <input type="password" name="j_password"/>
+                <input id="j_password" type="password" name="j_password"/>
             </td>
         </tr>
         <tr>
@@ -42,8 +49,6 @@
             </td>
         </tr>
     </table>
-
-
 </form>
 </body>
 </html>

@@ -7,14 +7,20 @@
        http://www.springframework.org/schema/security
        http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="true">
-        <intercept-url pattern="/login" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/**" access="ROLE_USER"/>
-        <form-login login-page="/login"/>
+    <http auto-config="true" use-expressions="true">
+        <intercept-url pattern="/login" access="permitAll"/>
+        <intercept-url pattern="/logout" access="permitAll"/>
+        <intercept-url pattern="/loginFailed" access="permitAll"/>
+        <intercept-url pattern="/403" access="permitAll"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+        <form-login login-page="/login" authentication-failure-url="/loginFailed"/>
+        <logout logout-success-url="/logout"/>
+        <access-denied-handler error-page="/403"/>
     </http>
 
     <authentication-manager>
         <authentication-provider>
+            <!--suppress SpringModelInspection -->
             <password-encoder hash="bcrypt"/>
             <jdbc-user-service data-source-ref="dataSource"/>
             <!--<user-service>-->
