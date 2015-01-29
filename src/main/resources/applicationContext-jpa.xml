@@ -47,7 +47,7 @@
         <property name="persistenceProvider">
             <bean class="org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider"/>
         </property>
-        <property name="sharedCacheMode" value="ALL"/>
+        <property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>
         <property name="persistenceXmlLocation" value="classpath:META-INF/persistence.xml"/>
         <property name="validationMode" value="AUTO"/>
         <property name="jpaVendorAdapter">
@@ -77,6 +77,11 @@
                 <entry key="hibernate.c3p0.idle_test_period" value="${hibernate.c3p0.idle_test_period}"/>
                 <entry key="hibernate.c3p0.validate" value="${hibernate.c3p0.validate}"/>
                 <entry key="hibernate.c3p0.preferredTestQuery" value="${hibernate.c3p0.preferredTestQuery}"/>
+                <entry key="hibernate.cache.use_second_level_cache" value="true"/>
+                <entry key="hibernate.cache.region.factory_class"
+                       value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
+                <entry key="hibernate.cache.use_query_cache" value="true"/>
+                <entry key="hibernate.cache.use_structured_entries" value="true"/>
             </map>
         </property>
     </bean>
