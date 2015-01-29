@@ -27,7 +27,13 @@ public abstract class BaseEntity implements Serializable {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "CREATION_DATE", nullable = false)
-    private DateTime creationDate = new DateTime();
+    private DateTime creationDate;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+    @Column(name = "UPDATE_DATE", nullable = false)
+    private DateTime updateDate;
 
     public DateTime getCreationDate() {
         return creationDate;
@@ -43,5 +49,23 @@ public abstract class BaseEntity implements Serializable {
 
     private void setId(Long id) {
         this.id = id;
+    }
+
+    public DateTime getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(DateTime updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    @PrePersist
+    private void prePersist() {
+        creationDate = new DateTime();
+    }
+
+    @PreUpdate
+    private void preUpdate() {
+        updateDate = new DateTime();
     }
 }

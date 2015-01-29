@@ -13,6 +13,7 @@ import java.util.List;
  * @author Ming Li
  */
 public interface PermissionRepository extends JpaRepository<Permission, Long> {
+
     @Query("select permission from Permission permission where permission.user.username = :username and permission.permission = :permission and permission.target = :target")
     public List<Permission> find(@Param("username") String username, @Param("target") String target, @Param("permission") String permission);
 

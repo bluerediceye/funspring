@@ -10,7 +10,7 @@
             classpath:applicationContext-dataSource.xml
             classpath:applicationContext-jpa.xml
             classpath:applicationContext.xml
-            /WEB-INF/config/webapp-security.xml
+            /WEB-INF/config/servlet-security.xml
         </param-value>
     </context-param>
     
@@ -37,7 +37,7 @@
     </filter>
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
-        <servlet-name>webappServlet</servlet-name>
+        <url-pattern>/*</url-pattern>
     </filter-mapping>
     
     <!-- Character encoding filter -->
