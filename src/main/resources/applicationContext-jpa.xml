@@ -77,11 +77,10 @@
                 <entry key="hibernate.c3p0.idle_test_period" value="${hibernate.c3p0.idle_test_period}"/>
                 <entry key="hibernate.c3p0.validate" value="${hibernate.c3p0.validate}"/>
                 <entry key="hibernate.c3p0.preferredTestQuery" value="${hibernate.c3p0.preferredTestQuery}"/>
-                <entry key="hibernate.cache.use_second_level_cache" value="true"/>
-                <entry key="hibernate.cache.region.factory_class"
-                       value="org.hibernate.cache.ehcache.EhCacheRegionFactory"/>
-                <entry key="hibernate.cache.use_query_cache" value="true"/>
-                <entry key="hibernate.cache.use_structured_entries" value="true"/>
+                <entry key="hibernate.cache.use_second_level_cache" value="${hibernate.cache.use_second_level_cache}"/>
+                <entry key="hibernate.cache.region.factory_class" value="${hibernate.cache.region.factory_class}"/>
+                <entry key="hibernate.cache.use_query_cache" value="${hibernate.cache.use_query_cache}"/>
+                <entry key="hibernate.cache.use_structured_entries" value="${hibernate.cache.use_structured_entries}"/>
             </map>
         </property>
     </bean>
