@@ -12,6 +12,8 @@
     <!-- Static resources -->
     <http pattern="/js/**" security="none"/>
     <http pattern="/css/**" security="none"/>
+    <http pattern="/img/**" security="none"/>
+    <http pattern="/doc/**" security="none"/>
 
     <http auto-config="true" pattern="/**" use-expressions="true">
         <intercept-url pattern="/login" access="permitAll" requires-channel="https"/>

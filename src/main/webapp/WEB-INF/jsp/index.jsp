@@ -1,6 +1,7 @@
 <%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!DOCTYPE html>
 <html>
 <head>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-2.1.3.js"></script>
