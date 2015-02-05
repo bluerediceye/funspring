@@ -40,9 +40,9 @@
         <h1>Login to Web App</h1>
 
         <form method="post" action="<c:url value="/j_spring_security_check"/>" name="f">
-            <p><input type="text" name="j_username" value="" placeholder="Username or Email"></p>
+            <p><input type="text" name="j_username" value="" placeholder="Username or Email" required></p>
 
-            <p><input type="password" name="j_password" value="" placeholder="Password"></p>
+            <p><input type="password" name="j_password" value="" placeholder="Password" required></p>
 
             <p class="remember_me">
                 <label>

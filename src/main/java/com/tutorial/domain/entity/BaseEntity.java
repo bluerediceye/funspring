@@ -32,7 +32,7 @@ public abstract class BaseEntity implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    @Column(name = "UPDATE_DATE", nullable = false)
+    @Column(name = "UPDATE_DATE", nullable = true)
     private DateTime updateDate;
 
     public DateTime getCreationDate() {

@@ -85,4 +85,6 @@ http://www.springframework.org/schema/security/spring-security.xsd">
             </bean>
         </property>
     </bean>
+
+    <context:mbean-export/>
 </beans>

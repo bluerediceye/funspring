@@ -1,12 +1,16 @@
 package com.tutorial.webapp.controller;
 
+import com.codahale.metrics.*;
 import com.tutorial.domain.entity.User;
 import com.tutorial.domain.entity.UserDetails;
 import com.tutorial.service.UserService;
+import org.apache.commons.lang3.RandomUtils;
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedAttribute;
+import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+@ManagedResource
 @Controller
 public class HomeController {
 
@@ -22,17 +27,48 @@ public class HomeController {
     private Logger LOG = LoggerFactory.getLogger(HomeController.class);
 
     private static String message = "Welcome to your 1st Maven Spring project !";
+
+    private static MetricRegistry metrics = new MetricRegistry();
+
+    private Counter counter = metrics.counter("counters");
+
+    private Meter meter = metrics.meter("requests");
+
+    private Timer timer = metrics.timer("timer");
     
     @Autowired
     private UserService userService;
 
+    static {
+        metrics.register("guages", new Gauge<Integer>() {
+            @Override
+            public Integer getValue() {
+                System.out.printf("8");
+                return 8;
+            }
+        });
+
+        final JmxReporter reporter = JmxReporter
+                .forRegistry(metrics)
+                .inDomain("tutorial")
+                .build();
+        reporter.start();
+    }
+
     @RequestMapping("/index")
-    public ModelAndView index() {
-//        User user = createUser();
-//        userService.saveUser(user);
-//        LOG.info("User's age is: {}", user);
+    public ModelAndView index() throws InterruptedException {
+        User user = new User();
+        createUser(user);
+        userService.saveUser(user);
+        
         return new ModelAndView("index", "message", message);
     }
+
+    @ManagedAttribute
+    public long getCount() {
+        return counter.getCount();
+    }
+    
 
     @RequestMapping("/hello")
     public ModelAndView showMessage() {
@@ -44,7 +80,7 @@ public class HomeController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String createUser(@ModelAttribute("user") User user) {
         LOG.info("Create an user !!!");
-        user.setUsername("mli" + i++);
+        user.setUsername("mli" + RandomUtils.nextLong(0, Long.MAX_VALUE));
         user.setPassword("password");
         user.setEnabled(true);
         UserDetails details = new UserDetails();
@@ -54,7 +90,6 @@ public class HomeController {
         details.setTitle("Mr.");
         details.setUser(user);
         user.setUserDetails(details);
-        userService.saveUser(user);
         return "index";
     }
     

@@ -1,5 +1,6 @@
 package com.tutorial.service;
 
+import com.tutorial.application.Auditable;
 import com.tutorial.domain.entity.User;
 import com.tutorial.repository.UserRepository;
 import org.slf4j.Logger;
@@ -20,6 +21,7 @@ import java.util.List;
  * @author Ming Li
  */
 @Service
+@Auditable
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
