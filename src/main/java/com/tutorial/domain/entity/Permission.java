@@ -19,6 +19,8 @@ public class Permission extends BaseEntity {
 
     @Column(name = "PERMISSION")
     private String permission;
+    @Column(name = "TARGET")
+    private String target;
 
     public String getTarget() {
         return target;
@@ -27,9 +29,6 @@ public class Permission extends BaseEntity {
     public void setTarget(String target) {
         this.target = target;
     }
-
-    @Column(name = "TARGET")
-    private String target;
 
     public User getUser() {
         return user;

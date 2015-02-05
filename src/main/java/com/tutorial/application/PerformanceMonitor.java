@@ -1,7 +1,12 @@
 package com.tutorial.application;
 
-import com.codahale.metrics.*;
+import com.codahale.metrics.JmxReporter;
+import com.codahale.metrics.MetricRegistry;
+import com.codahale.metrics.Timer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Created on 04/02/15
@@ -11,26 +16,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class PerformanceMonitor {
 
-    private static MetricRegistry metrics = new MetricRegistry();
+    @Autowired
+    private MetricRegistry metrics;
 
-    private Counter counter = metrics.counter("counters");
-
-    private Meter meter = metrics.meter("requests");
-
-    private Timer timer = metrics.timer("timer");
-
-    static {
-        metrics.register("guages", new Gauge<Integer>() {
-            @Override
-            public Integer getValue() {
-                return 8;
-            }
-        });
-
+    @PostConstruct
+    private void startReport() {
         final JmxReporter reporter = JmxReporter
                 .forRegistry(metrics)
                 .inDomain("tutorial")
                 .build();
         reporter.start();
+    }
+
+    public Object time(String name) {
+        Timer timer = metrics.timer(name);
+        return timer.time();
+    }
+
+    public Long stop(Object context) {
+        Timer.Context ctx = (Timer.Context) context;
+        return ctx.stop();
     }
 }

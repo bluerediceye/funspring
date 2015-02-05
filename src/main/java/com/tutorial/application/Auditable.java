@@ -11,6 +11,7 @@ import java.lang.annotation.Target;
  * @author Ming Li
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target(ElementType.METHOD)
 public @interface Auditable {
+    String value();
 }

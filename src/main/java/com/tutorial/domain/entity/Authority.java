@@ -3,8 +3,8 @@ package com.tutorial.domain.entity;
 import javax.persistence.*;
 
 /**
- *
  * Created on 26/01/15
+ *
  * @author Ming Li
  */
 @Entity

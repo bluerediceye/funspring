@@ -16,12 +16,11 @@ import java.util.List;
 
 
 /**
- *
  * Created on 18/01/15
+ *
  * @author Ming Li
  */
 @Service
-@Auditable
 public class UserServiceImpl implements UserService {
 
     private static final Logger LOG = LoggerFactory.getLogger(UserServiceImpl.class);
@@ -37,6 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    @Auditable("smaller")
     public void saveUser(User user) {
         LOG.info("Save user into database.");
         userRepository.save(user);

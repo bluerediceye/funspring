@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--suppress JpaDomInspection -->
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
@@ -13,27 +13,27 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
         <!--<exclude-unlisted-classes>true</exclude-unlisted-classes>-->
         <!--<validation-mode>NONE</validation-mode>-->
         <!--<properties>-->
-            <!--<property name="hibernate.connection.driver_class" value="${hibernate.connection.driver_class}"/>-->
-            <!--<property name="hibernate.connection.url" value="${hibernate.connection.url}"/>-->
-            <!--<property name="hibernate.connection.username" value="${hibernate.connection.username}"/>-->
-            <!--<property name="hibernate.connection.password" value="${hibernate.connection.password}"/>-->
-            <!--<property name="hibernate.dialect" value="${hibernate.dialect}"/>-->
-            <!--<property name="hibernate.show_sql" value="${hibernate.show_sql}"/>-->
-            <!--<property name="hibernate.format_sql" value="${hibernate.format_sql}"/>-->
-            <!--<property name="hibernate.hbm2ddl.auto" value="hibernate.hbm2ddl.auto"/>-->
+        <!--<property name="hibernate.connection.driver_class" value="${hibernate.connection.driver_class}"/>-->
+        <!--<property name="hibernate.connection.url" value="${hibernate.connection.url}"/>-->
+        <!--<property name="hibernate.connection.username" value="${hibernate.connection.username}"/>-->
+        <!--<property name="hibernate.connection.password" value="${hibernate.connection.password}"/>-->
+        <!--<property name="hibernate.dialect" value="${hibernate.dialect}"/>-->
+        <!--<property name="hibernate.show_sql" value="${hibernate.show_sql}"/>-->
+        <!--<property name="hibernate.format_sql" value="${hibernate.format_sql}"/>-->
+        <!--<property name="hibernate.hbm2ddl.auto" value="hibernate.hbm2ddl.auto"/>-->
 
-            <!-- Auto detect annotated entity classes and hibernate configuration files -->
-            <!--<property name="hibernate.archive.autodetection" value="class,hbm"/>-->
-            <!--<property name="hibernate.c3p0.min_size" value="5"/>-->
-            <!--<property name="hibernate.c3p0.max_size" value="20"/>-->
-            <!--<property name="hibernate.c3p0.timeout" value="1800"/>-->
-            <!--<property name="hibernate.c3p0.max_statements" value="50"/>-->
+        <!-- Auto detect annotated entity classes and hibernate configuration files -->
+        <!--<property name="hibernate.archive.autodetection" value="class,hbm"/>-->
+        <!--<property name="hibernate.c3p0.min_size" value="5"/>-->
+        <!--<property name="hibernate.c3p0.max_size" value="20"/>-->
+        <!--<property name="hibernate.c3p0.timeout" value="1800"/>-->
+        <!--<property name="hibernate.c3p0.max_statements" value="50"/>-->
 
-            <!--<property name="hibernate.dbcp.initialSize" value="10"/>-->
-            <!--<property name="hibernate.dbcp.maxActive" value="20"/>-->
-            <!--<property name="hibernate.dbcp.maxIdle" value="20"/>-->
-            <!--<property name="hibernate.dbcp.minIdle" value="5"/>-->
-            <!--<property name="hibernate.dbcp.validationQuery" value="SELECT 1"/>-->
+        <!--<property name="hibernate.dbcp.initialSize" value="10"/>-->
+        <!--<property name="hibernate.dbcp.maxActive" value="20"/>-->
+        <!--<property name="hibernate.dbcp.maxIdle" value="20"/>-->
+        <!--<property name="hibernate.dbcp.minIdle" value="5"/>-->
+        <!--<property name="hibernate.dbcp.validationQuery" value="SELECT 1"/>-->
         <!--</properties>-->
     </persistence-unit>
 </persistence>
