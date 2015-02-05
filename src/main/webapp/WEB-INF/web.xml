@@ -7,7 +7,7 @@
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath:applicationContext-dataSources.xml
+            classpath:applicationContext-dataSource.xml
             classpath:applicationContext-jpa.xml
             classpath:applicationContext.xml
             /WEB-INF/config/servlet-security.xml
