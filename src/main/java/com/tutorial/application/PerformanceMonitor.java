@@ -4,6 +4,7 @@ import com.codahale.metrics.JmxReporter;
 import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Timer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +15,7 @@ import javax.annotation.PostConstruct;
  * @author Ming Li
  */
 @Component
+@ManagedResource
 public class PerformanceMonitor {
 
     @Autowired

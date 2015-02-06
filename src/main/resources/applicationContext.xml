@@ -9,9 +9,11 @@
        http://www.springframework.org/schema/aop/spring-aop.xsd 
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <aop:aspectj-autoproxy/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-    <context:component-scan base-package="com.tutorial.service,com.tutorial.repository,com.tutorial.application"/>
+    <context:component-scan base-package="com.tutorial"/>
+
+    <context:mbean-export/>
 
     <context:property-placeholder ignore-resource-not-found="false"
                                   location="classpath:database.properties"
