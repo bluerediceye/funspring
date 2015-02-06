@@ -3,6 +3,7 @@ package com.tutorial.service;
 import com.tutorial.application.Auditable;
 import com.tutorial.domain.entity.User;
 import com.tutorial.repository.UserRepository;
+import org.hibernate.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Auditable("smaller")
     public void saveUser(User user) {
+        entityManager.unwrap(Session.class);
         LOG.info("Save user into database.");
         userRepository.save(user);
     }

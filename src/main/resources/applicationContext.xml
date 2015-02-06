@@ -21,4 +21,15 @@
     <bean id="registry" class="com.codahale.metrics.MetricRegistry"/>
 
     <bean class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean"/>
+
+    <bean class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="com.tutorial.utils.PersistenceUtils"/>
+        <!--suppress SpringModelInspection -->
+        <property name="targetMethod" value="setEntityManagerFactory"/>
+        <property name="arguments">
+            <list>
+                <ref bean="entityManagerFactory"/>
+            </list>
+        </property>
+    </bean>
 </beans>

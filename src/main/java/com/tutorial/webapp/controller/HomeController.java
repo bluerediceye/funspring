@@ -31,7 +31,6 @@ public class HomeController {
         User user = new User();
         createUser(user);
         userService.saveUser(user);
-
         return new ModelAndView("index", "message", message);
     }
 

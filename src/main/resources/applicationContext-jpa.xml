@@ -71,6 +71,8 @@
                 <entry key="hibernate.cache.region.factory_class" value="${hibernate.cache.region.factory_class}"/>
                 <entry key="hibernate.cache.use_query_cache" value="${hibernate.cache.use_query_cache}"/>
                 <entry key="hibernate.cache.use_structured_entries" value="${hibernate.cache.use_structured_entries}"/>
+                <entry key="hibernate.current_session_context_class"
+                       value="${hibernate.current_session_context_class}"/>
             </map>
         </property>
     </bean>
