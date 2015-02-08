@@ -54,7 +54,6 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManager" />
-          <factory-entry name="tutorialUnit" value="206c43f0-044b-4a92-be85-c6d03d344556" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
