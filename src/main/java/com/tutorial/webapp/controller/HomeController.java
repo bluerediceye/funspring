@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,19 +28,20 @@ public class HomeController {
 
     @RequestMapping("/index")
     @Auditable("controller")
-    public ModelAndView index(ModelMap modelMap) throws InterruptedException {
+    public ModelAndView index(Model model) throws InterruptedException {
         User user = new User();
         createUser(user);
         userService.saveUser(user);
-        modelMap.addAttribute("message", message);
-        return new ModelAndView("defaultLayout", modelMap);
+        model.addAttribute("message", message);
+        return new ModelAndView("defaultLayout", model.asMap());
     }
 
     @RequestMapping("/hello")
     @Auditable("controller")
-    public ModelAndView showMessage() {
+    public String showMessage(Model model) {
         System.out.println("from controller");
-        return new ModelAndView("hello", "message", message);
+        model.addAttribute("message", message);
+        return "defaultLayout";
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') and hasPermission(#user,'createUser')")

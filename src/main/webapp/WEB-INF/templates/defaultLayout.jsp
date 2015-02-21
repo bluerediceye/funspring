@@ -1,5 +1,7 @@
-<%@taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; UTF-8" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,8 +13,12 @@
 
 <center>
     <h2>Welcome to Tutorial website <sec:authentication property="name"/></h2>
-    <h4>
+
+    <h3>
         <a href="hello.htm">Click Here??</a>
+    </h3>
+    <h4>
+        <spring:message code="one.message"/>
     </h4>
 
 
