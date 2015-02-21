@@ -11,7 +11,10 @@
 
     <aop:aspectj-autoproxy proxy-target-class="true"/>
 
-    <context:component-scan base-package="com.tutorial"/>
+    <context:component-scan base-package="com.tutorial">
+        <context:exclude-filter type="regex" expression="com.tutorial.webapp.+"/>
+        <context:exclude-filter type="regex" expression="com.tutorial.rest.+"/>
+    </context:component-scan>
 
     <context:mbean-export/>
 

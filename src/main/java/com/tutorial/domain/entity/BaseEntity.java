@@ -26,6 +26,7 @@ public abstract class BaseEntity implements Serializable {
     private Long id;
 
     @Version
+    @Column(name = "VERSION", nullable = false)
     private int version;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)

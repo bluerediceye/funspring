@@ -9,6 +9,7 @@
 
     <!-- Restful resources -->
     <http pattern="/rest/**" security="none"/>
+    
     <!-- Static resources -->
     <http pattern="/js/**" security="none"/>
     <http pattern="/css/**" security="none"/>
