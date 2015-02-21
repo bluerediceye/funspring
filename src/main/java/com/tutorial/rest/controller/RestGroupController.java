@@ -2,7 +2,7 @@ package com.tutorial.rest.controller;
 
 import com.tutorial.domain.entity.Group;
 import com.tutorial.domain.entity.User;
-import com.tutorial.repository.GroupRepository;
+import com.tutorial.repository.GroupJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestGroupController {
 
     @Autowired
-    private GroupRepository groupRepository;
+    private GroupJpaRepository groupJpaRepository;
 
     @RequestMapping(value = "/group", method = RequestMethod.POST)
     public void createGroup() {
@@ -29,6 +29,6 @@ public class RestGroupController {
 
         group.getUsers().add(user);
 
-        groupRepository.save(group);
+        groupJpaRepository.save(group);
     }
 }

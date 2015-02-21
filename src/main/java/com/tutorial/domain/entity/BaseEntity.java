@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.tutorial.persistence.EntityLifecycleListener;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -23,16 +25,21 @@ public abstract class BaseEntity implements Serializable {
     @Column(name = "ID", nullable = false)
     private Long id;
 
+    @Version
+    private int version;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "CREATION_DATE", nullable = false)
+    @CreatedDate
     private DateTime creationDate;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "UPDATE_DATE", nullable = true)
+    @LastModifiedDate
     private DateTime updateDate;
 
     public DateTime getCreationDate() {
@@ -59,13 +66,21 @@ public abstract class BaseEntity implements Serializable {
         this.updateDate = updateDate;
     }
 
+    public int getVersion() {
+        return version;
+    }
+
+    public void setVersion(int version) {
+        this.version = version;
+    }
+
     @PrePersist
     private void prePersist() {
-        creationDate = new DateTime();
+//        creationDate = new DateTime();
     }
 
     @PreUpdate
     private void preUpdate() {
-        updateDate = new DateTime();
+//        updateDate = new DateTime();
     }
 }

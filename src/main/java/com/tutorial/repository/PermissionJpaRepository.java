@@ -4,6 +4,7 @@ import com.tutorial.domain.entity.Permission;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -12,7 +13,9 @@ import java.util.List;
  *
  * @author Ming Li
  */
-public interface PermissionRepository extends JpaRepository<Permission, Long> {
+
+@Repository
+public interface PermissionJpaRepository extends JpaRepository<Permission, Long> {
 
     @Query("select permission from Permission permission where permission.user.username = :username and permission.permission = :permission and permission.target = :target")
     public List<Permission> find(@Param("username") String username, @Param("target") String target, @Param("permission") String permission);

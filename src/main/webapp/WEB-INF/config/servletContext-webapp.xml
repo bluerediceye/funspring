@@ -83,7 +83,7 @@ http://www.springframework.org/schema/security/spring-security.xsd http://www.sp
           class="org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler">
         <property name="permissionEvaluator">
             <bean class="com.tutorial.security.CustomPermissionEvaluator">
-                <property name="permissionRepository" ref="permissionRepository"/>
+                <property name="permissionJpaRepository" ref="permissionJpaRepository"/>
             </bean>
         </property>
     </bean>

@@ -1,6 +1,6 @@
 package com.tutorial.security;
 
-import com.tutorial.repository.PermissionRepository;
+import com.tutorial.repository.PermissionJpaRepository;
 import org.springframework.security.access.PermissionEvaluator;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
@@ -14,14 +14,14 @@ import java.io.Serializable;
  */
 public class CustomPermissionEvaluator implements PermissionEvaluator {
 
-    private PermissionRepository permissionRepository;
+    private PermissionJpaRepository permissionJpaRepository;
 
     @Override
     public boolean hasPermission(Authentication authentication, Object targetDomainObject, Object permission) {
 
         String username = ((User) authentication.getPrincipal()).getUsername();
         String target = targetDomainObject.getClass().getName();
-        int count = permissionRepository.exists(username, target, permission.toString());
+        int count = permissionJpaRepository.exists(username, target, permission.toString());
 
         return count == 1;
     }
@@ -31,7 +31,7 @@ public class CustomPermissionEvaluator implements PermissionEvaluator {
         return false;
     }
 
-    public void setPermissionRepository(PermissionRepository permissionRepository) {
-        this.permissionRepository = permissionRepository;
+    public void setPermissionJpaRepository(PermissionJpaRepository permissionJpaRepository) {
+        this.permissionJpaRepository = permissionJpaRepository;
     }
 }
