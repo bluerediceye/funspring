@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,11 +28,12 @@ public class HomeController {
 
     @RequestMapping("/index")
     @Auditable("controller")
-    public ModelAndView index() throws InterruptedException {
+    public ModelAndView index(ModelMap modelMap) throws InterruptedException {
         User user = new User();
         createUser(user);
         userService.saveUser(user);
-        return new ModelAndView("index", "message", message);
+        modelMap.addAttribute("message", message);
+        return new ModelAndView("defaultLayout", modelMap);
     }
 
     @RequestMapping("/hello")
@@ -43,7 +45,7 @@ public class HomeController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN') and hasPermission(#user,'createUser')")
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    public String createUser(@ModelAttribute("user") User user) {
+    public ModelAndView createUser(@ModelAttribute("user") User user) {
         LOG.info("Create an user !!!");
         user.setUsername("mli" + RandomUtils.nextLong(0, Long.MAX_VALUE));
         user.setPassword("password");
@@ -55,6 +57,6 @@ public class HomeController {
         details.setTitle("Mr.");
         details.setUser(user);
         user.setUserDetails(details);
-        return "index";
+        return new ModelAndView("index");
     }
 }  
