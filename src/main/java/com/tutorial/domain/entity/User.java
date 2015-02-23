@@ -5,12 +5,14 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  * Created on 26/01/15
  *
  * @author Ming Li
  */
+@XmlRootElement
 @Table(name = "USERS")
 @Entity
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE, region = "user")

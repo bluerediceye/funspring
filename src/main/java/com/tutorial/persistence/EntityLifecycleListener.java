@@ -5,9 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 
-/**
- * Created by mli on 25/01/15.
- */
 public class EntityLifecycleListener {
 
     private Logger LOG = LoggerFactory.getLogger(EntityLifecycleListener.class);

@@ -4,6 +4,6 @@
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 
-    <definition name="defaultLayout" template="/WEB-INF/templates/defaultLayout.jsp"/>
+    <definition name="defaultLayout" template="/WEB-INF/jsp/template/defaultLayout.jsp"/>
 
 </tiles-definitions>

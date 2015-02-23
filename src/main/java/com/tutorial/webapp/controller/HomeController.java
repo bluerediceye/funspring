@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -38,10 +39,11 @@ public class HomeController {
 
     @RequestMapping("/hello")
     @Auditable("controller")
-    public String showMessage(Model model) {
+    @ResponseBody
+    public User showMessage(Model model) {
         System.out.println("from controller");
         model.addAttribute("message", message);
-        return "defaultLayout";
+        return new User();
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') and hasPermission(#user,'createUser')")

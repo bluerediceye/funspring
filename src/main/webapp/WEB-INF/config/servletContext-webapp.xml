@@ -19,53 +19,13 @@ http://www.springframework.org/schema/security/spring-security.xsd http://www.sp
     
     <aop:aspectj-autoproxy/>
     <context:component-scan base-package="com.tutorial.webapp"/>
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven content-negotiation-manager="contentNegotiationManager"
+                           enable-matrix-variables="true"
+                           ignore-default-model-on-redirect="true"/>
 
-    <!--suppress SpringModelInspection -->
     <mvc:view-controller path="/" view-name="index"/>
-
     <mvc:view-resolvers>
-        <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-            <property name="order" value="1"/>
-            <property name="contentNegotiationManager">
-                <bean class="org.springframework.web.accept.ContentNegotiationManager">
-                    <constructor-arg>
-                        <bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
-                            <constructor-arg>
-                                <map>
-                                    <entry key="json" value="application/json"/>
-                                    <entry key="xml" value="application/xml"/>
-                                </map>
-                            </constructor-arg>
-                        </bean>
-                    </constructor-arg>
-                </bean>
-            </property>
-            <property name="defaultViews">
-                <list>
-                    <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
-                    <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
-                        <constructor-arg>
-                            <bean class="org.springframework.oxm.xstream.XStreamMarshaller"/>
-                        </constructor-arg>
-                    </bean>
-                </list>
-            </property>
-            <property name="viewResolvers">
-                <list>
-                    <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-                        <property name="viewClass">
-                            <value>org.springframework.web.servlet.view.tiles3.TilesView</value>
-                        </property>
-                    </bean>
-                    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-                        <property name="prefix" value="/WEB-INF/jsp/"/>
-                        <property name="suffix" value=".jsp"/>
-                    </bean>
-                    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
-                </list>
-            </property>
-        </bean>
+        <ref bean="contentNegotiatingViewResolver"/>
     </mvc:view-resolvers>
 
     <mvc:resources mapping="/js/**" location="/js/" cache-period="10000"/>
@@ -79,11 +39,71 @@ http://www.springframework.org/schema/security/spring-security.xsd http://www.sp
             <property name="paramName" value="language"/>
         </bean>
     </mvc:interceptors>
+    <mvc:tiles-configurer check-refresh="true" validate-definitions="true">
+        <mvc:definitions location="/WEB-INF/tiles/definitions.xml"/>
+    </mvc:tiles-configurer>
 
-    <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
-        <property name="definitions">
+    <bean id="pathExtensionContentNegotiationStrategy"
+          class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+        <constructor-arg>
+            <map>
+                <entry key="json" value="application/json"/>
+                <entry key="xml" value="application/xml"/>
+            </map>
+        </constructor-arg>
+    </bean>
+    <bean id="parameterContentNegotiationStrategy"
+          class="org.springframework.web.accept.ParameterContentNegotiationStrategy">
+        <constructor-arg>
+            <map>
+                <entry key="json" value-type="org.springframework.http.MediaType" value="application/json"/>
+                <entry key="xml" value-type="org.springframework.http.MediaType" value="application/xml"/>
+            </map>
+        </constructor-arg>
+        <property name="parameterName" value="format"/>
+    </bean>
+    <bean id="headerContentNegotiationStrategy"
+          class="org.springframework.web.accept.HeaderContentNegotiationStrategy"/>
+    <bean id="fixedContentNegotiationStrategy" class="org.springframework.web.accept.FixedContentNegotiationStrategy">
+        <constructor-arg>
+            <value type="org.springframework.http.MediaType">application/json</value>
+        </constructor-arg>
+    </bean>
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManager">
+        <constructor-arg>
             <list>
-                <value>/WEB-INF/tiles/tiles-definitions.xml</value>
+                <ref bean="pathExtensionContentNegotiationStrategy"/>
+                <ref bean="parameterContentNegotiationStrategy"/>
+                <ref bean="headerContentNegotiationStrategy"/>
+                <ref bean="fixedContentNegotiationStrategy"/>
+            </list>
+        </constructor-arg>
+    </bean>
+
+    <bean id="contentNegotiatingViewResolver"
+          class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+        <property name="order" value="1"/>
+        <property name="contentNegotiationManager" ref="contentNegotiationManager"/>
+        <property name="defaultViews">
+            <list>
+                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"/>
+                <bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+                    <constructor-arg>
+                        <bean class="org.springframework.oxm.xstream.XStreamMarshaller"/>
+                    </constructor-arg>
+                </bean>
+            </list>
+        </property>
+        <property name="viewResolvers">
+            <list>
+                <bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+                    <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+                </bean>
+                <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                    <property name="prefix" value="/WEB-INF/jsp/"/>
+                    <property name="suffix" value=".jsp"/>
+                </bean>
+                <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
             </list>
         </property>
     </bean>
@@ -105,5 +125,4 @@ http://www.springframework.org/schema/security/spring-security.xsd http://www.sp
             </bean>
         </property>
     </bean>
-
 </beans>

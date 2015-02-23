@@ -25,26 +25,18 @@
         <fileset id="web webappServlet servlet context" name="MVC webappServlet servlet context" removed="true">
           <dependency>web application context</dependency>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/servletContext-rest.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-webapp.xml</file>
         </fileset>
         <fileset id="web restServlet servlet context" name="MVC restServlet servlet context" removed="true">
           <dependency>web application context</dependency>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/servletContext-rest.xml</file>
         </fileset>
-        <fileset id="fileset2" name="Webapp Servlet Context" removed="false">
-          <dependency>fileset</dependency>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-webapp.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/webapp-security.xml</file>
-        </fileset>
-        <fileset id="fileset3" name="Rest Servlet Context" removed="false">
-          <dependency>fileset</dependency>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-rest.xml</file>
-        </fileset>
-        <fileset id="fileset" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-jpa.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-datasource.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-security.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servlet-security.xml</file>
+        <fileset id="fileset" name="annotation config" removed="false">
+          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/AppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/DataSourceConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/RestAppConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/SecurityConfig.java</file>
+          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/WebAppConfig.java</file>
         </fileset>
       </configuration>
     </facet>
@@ -54,7 +46,7 @@
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
           <factory-entry name="entityManager" />
-          <factory-entry name="tutorialUnit" value="dataSource" />
+          <factory-entry name="tutorialUnit" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
@@ -73,38 +65,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Spring MVC-4.1.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-core:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-api:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-api:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: commons-digester:commons-digester:2.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-beanutils:commons-beanutils:1.8.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-jsp:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-servlet:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-servlet:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-jsp:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-template:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-autotag-core-runtime:1.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-extras:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-servlet-wildcard:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-mustache:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: com.github.spullara.mustache.java:compiler:0.8.4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-freemarker:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-freemarker:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.freemarker:freemarker:2.3.15" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-velocity:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.velocity:velocity-tools:2.0" level="project" />
-    <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2" level="project" />
-    <orderEntry type="library" name="Maven: oro:oro:2.0.8" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.velocity:velocity:1.6.2" level="project" />
-    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.4" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-request-velocity:1.0.6" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-el:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-mvel:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: org.mvel:mvel2:2.0.11" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-ognl:3.0.5" level="project" />
-    <orderEntry type="library" name="Maven: ognl:ognl:2.7.3" level="project" />
-    <orderEntry type="library" name="Maven: jboss:javassist:3.7.ga" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.tiles:tiles-compat:3.0.5" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.10" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.10" level="project" />
@@ -149,7 +109,6 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-oxm:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-orm:4.1.4.RELEASE" level="project" />
-    <orderEntry type="library" name="Maven: org.springframework.security:spring-security:4.0.0.M2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-taglibs:4.0.0.M2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-acl:4.0.0.M2" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.security:spring-security-core:4.0.0.M2" level="project" />
