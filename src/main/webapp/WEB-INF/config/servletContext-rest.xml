@@ -6,6 +6,17 @@
     http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <mvc:annotation-driven/>
     <context:component-scan base-package="com.tutorial.rest"/>
+    <mvc:annotation-driven/>
+    <!-- Direct static mappings -->
+    <!--suppress SpringModelInspection -->
+    <mvc:resources mapping="/swagger/**" location="/swagger/" cache-period="10000"/>
+    <!-- Serve static content-->
+    <mvc:default-servlet-handler/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <bean class="com.tutorial.rest.config.SwaggerConfig"/>
 </beans>
