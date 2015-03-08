@@ -6,10 +6,9 @@ import com.mangofactory.swagger.paths.SwaggerPathProvider;
 import com.mangofactory.swagger.plugin.EnableSwagger;
 import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import javax.servlet.ServletContext;
 
 /**
  * Created on 23/02/15
@@ -23,8 +22,11 @@ public class SwaggerConfig {
     @Autowired
     private SpringSwaggerConfig springSwaggerConfig;
 
-    @Autowired
-    private ServletContext servletContext;
+    @Value(value = "http://localhost:8080/rest")
+    private String applicationPath;
+
+    @Value(value = "http://localhost:8080/rest/api-docs")
+    private String documentationPath;
 
     /**
      * Every SwaggerSpringMvcPlugin bean is picked up by the swagger-mvc framework - allowing for multiple
@@ -32,7 +34,9 @@ public class SwaggerConfig {
      */
     @Bean
     public SwaggerSpringMvcPlugin customImplementation() {
-        return new SwaggerSpringMvcPlugin(springSwaggerConfig).pathProvider(swaggerPathProvider());
+        return new SwaggerSpringMvcPlugin(springSwaggerConfig)
+                .pathProvider(swaggerPathProvider())
+                ;
     }
 
     @Bean
@@ -40,12 +44,12 @@ public class SwaggerConfig {
         return new AbsoluteSwaggerPathProvider() {
             @Override
             protected String applicationPath() {
-                return "http://localhost:8080/rest";
+                return SwaggerConfig.this.applicationPath;
             }
 
             @Override
             protected String getDocumentationPath() {
-                return "http://localhost:8080/rest/api-docs";
+                return SwaggerConfig.this.documentationPath;
             }
         };
     }
