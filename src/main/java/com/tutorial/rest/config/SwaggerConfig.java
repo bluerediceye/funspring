@@ -1,6 +1,7 @@
 package com.tutorial.rest.config;
 
 import com.mangofactory.swagger.configuration.SpringSwaggerConfig;
+import com.mangofactory.swagger.models.dto.ApiInfo;
 import com.mangofactory.swagger.paths.AbsoluteSwaggerPathProvider;
 import com.mangofactory.swagger.paths.SwaggerPathProvider;
 import com.mangofactory.swagger.plugin.EnableSwagger;
@@ -36,7 +37,22 @@ public class SwaggerConfig {
     public SwaggerSpringMvcPlugin customImplementation() {
         return new SwaggerSpringMvcPlugin(springSwaggerConfig)
                 .pathProvider(swaggerPathProvider())
+                .includePatterns("/user.*", "/group.*")
+                .apiInfo(apiInfo())
+                .apiVersion("1.0")
                 ;
+    }
+
+    private ApiInfo apiInfo() {
+        ApiInfo apiInfo = new ApiInfo(
+                "My Apps API Title",
+                "My Apps API Description",
+                "My Apps API terms of service",
+                "My Apps API Contact Email",
+                "My Apps API Licence Type",
+                "My Apps API License URL"
+        );
+        return apiInfo;
     }
 
     @Bean
