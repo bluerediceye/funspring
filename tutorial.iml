@@ -12,54 +12,27 @@
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
-          <root url="file://$MODULE_DIR$/src/main/webapp" />
         </sourceRoots>
-      </configuration>
-    </facet>
-    <facet type="Spring" name="Spring">
-      <configuration process_explicitly_annotated="false">
-        <fileset id="web application context" name="MVC application context" removed="true">
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-jpa.xml</file>
-        </fileset>
-        <fileset id="web webappServlet servlet context" name="MVC webappServlet servlet context" removed="true">
-          <dependency>web application context</dependency>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/servletContext-rest.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-webapp.xml</file>
-        </fileset>
-        <fileset id="web restServlet servlet context" name="MVC restServlet servlet context" removed="true">
-          <dependency>web application context</dependency>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/servletContext-rest.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-rest.xml</file>
-        </fileset>
-        <fileset id="fileset" name="annotation config" removed="false">
-          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/AppConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/DataSourceConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/RestAppConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/SecurityConfig.java</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/WebAppConfig.java</file>
-        </fileset>
-        <fileset id="fileset2" name="Spring Application Context" removed="false">
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-dataSource.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-jpa.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servlet-security.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-rest.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-webapp.xml</file>
-          <file>file://$MODULE_DIR$/src/main/java/com/tutorial/config/SwaggerConfig.java</file>
-          <file>jar://$MAVEN_REPOSITORY$/com/mangofactory/swagger-springmvc/1.0.0-SNAPSHOT/swagger-springmvc-1.0.0-20150214.021457-7.jar!/com/mangofactory/swagger/configuration/SpringSwaggerConfig.class</file>
-        </fileset>
       </configuration>
     </facet>
     <facet type="jpa" name="JPA">
       <configuration>
         <setting name="validation-enabled" value="true" />
-        <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping>
-          <factory-entry name="entityManager" />
-          <factory-entry name="tutorialUnit" />
-        </datasource-mapping>
+        <setting name="provider-name" value="" />
+        <datasource-mapping />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
+      </configuration>
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-jpa.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/applicationContext-dataSource.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-webapp.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servlet-security.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/config/servletContext-rest.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>
@@ -67,15 +40,13 @@
     <output url="file://$MODULE_DIR$/target/classes" />
     <output-test url="file://$MODULE_DIR$/target/test-classes" />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/webapp" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Spring MVC-4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: log4j:log4j:1.2.17" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.10" level="project" />
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-log4j12:1.7.10" level="project" />
